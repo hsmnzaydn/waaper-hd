@@ -1,0 +1,63 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-kapt"
+
+/**
+ * Tüm bağımlılıklar buradan yönetiliyor
+ */
+apply from: '../dependencies.gradle'
+
+android {
+    compileSdkVersion core_common_dependencies.androidCompileSdkVersion
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        minSdkVersion core_common_dependencies.androidMinSdkVersion
+        targetSdkVersion core_common_dependencies.androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            }
+            development {
+                debuggable true
+
+            }
+
+        }
+    }
+
+    productFlavors {
+        flavorDimensions "version"
+        beta {
+        }
+        prod {
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation core_base_mvp_dependencies.kotlin
+    implementation core_base_mvp_dependencies.appCompat
+    implementation core_base_mvp_dependencies.dagger2
+    kapt core_base_mvp_dependencies.dagger2Compiler
+    kapt core_base_mvp_dependencies.dagger2Processor
+    implementation core_base_mvp_dependencies.dagger2Android
+    implementation core_base_mvp_dependencies.dagger2Support
+    implementation core_base_mvp_dependencies.recylerView
+
+    api project(':core_utility')
+    api project(':core_network')
+}

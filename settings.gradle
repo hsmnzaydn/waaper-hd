@@ -1,0 +1,2 @@
+rootProject.name='WaaperHD'
+include ':app', ':core_utility', ':base_mvp', ':core_local', ':core_network'

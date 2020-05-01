@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-kapt"
+
+/**
+ * Tüm bağımlılıklar buradan yönetiliyor
+ */
+apply from: '../dependencies.gradle'
+
+android {
+    compileSdkVersion core_common_dependencies.androidCompileSdkVersion
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        minSdkVersion core_common_dependencies.androidMinSdkVersion
+        targetSdkVersion core_common_dependencies.androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            }
+            development {
+                debuggable true
+
+            }
+
+        }
+    }
+
+    productFlavors {
+        flavorDimensions "version"
+        beta {
+        }
+        prod {
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation core_local_dependencies.kotlin
+    implementation core_local_dependencies.appCompat
+    implementation core_local_dependencies.dagger2
+    kapt core_local_dependencies.dagger2Compiler
+    kapt core_local_dependencies.dagger2Processor
+    implementation core_local_dependencies.dagger2Android
+    implementation core_local_dependencies.dagger2Support
+    implementation core_local_dependencies.retrofitGsonConverter
+}
