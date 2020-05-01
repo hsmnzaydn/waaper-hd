@@ -11,13 +11,14 @@ import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), HomeContract.View {
 
-    private lateinit var binding: ActivityHomeBinding
     @Inject
     lateinit var presenter: HomeContract.Presenter<HomeContract.View>
 
+    private lateinit var binding:ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         presenter.onAttach(this)

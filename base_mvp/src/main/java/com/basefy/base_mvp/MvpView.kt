@@ -55,6 +55,10 @@ interface MvpView {
     fun addScrollableToFullScreenView(statusBarColor: Int? = Color.TRANSPARENT)
 
 
+     fun initUI() {
 
+     }
+     fun againOpened() {
 
+     }
 }

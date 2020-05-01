@@ -56,8 +56,6 @@ class ImagesAdapter(
 
         }
 
-
-
     }
 
 

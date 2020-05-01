@@ -27,6 +27,7 @@ abstract class BaseViewHolder<M : RecyclerItem> : RecyclerView.ViewHolder, Layou
     abstract fun bindItem(item: M)
 
     internal fun bindItem(item: M, onItemClick: (M,position:Int,layoutId:Int) -> Unit) {
+
         with(itemView) {
             setOnClickListener { onItemClick(item,adapterPosition,item.layoutId) }
             bindItem(item)

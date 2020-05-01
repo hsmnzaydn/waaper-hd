@@ -10,5 +10,4 @@ class HomePresenter<V : HomeContract.View> @Inject constructor(private val image
     BasePresenter<V>(), HomeContract.Presenter<V> {
 
 
-
 }

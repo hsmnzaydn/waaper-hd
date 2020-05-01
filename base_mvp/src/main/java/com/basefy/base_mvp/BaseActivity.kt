@@ -10,6 +10,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.viewbinding.ViewBinding
 import com.basefy.core_utility.CoreCommonUtils
 import dagger.android.support.DaggerAppCompatActivity
 
@@ -22,7 +23,6 @@ abstract class BaseActivity : DaggerAppCompatActivity(), MvpView, BaseFragment.C
 
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-
         super.onCreate(savedInstanceState, persistentState)
 
     }
