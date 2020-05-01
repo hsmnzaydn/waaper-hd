@@ -4,6 +4,8 @@ package com.hsmnzaydn.waaperhd.di.modules.presenter_module
 import com.hsmnzaydn.waaperhd.image.domain.usecase.ImageUseCase
 import com.hsmnzaydn.waaperhd.ui.home.HomeContract
 import com.hsmnzaydn.waaperhd.ui.home.HomePresenter
+import com.hsmnzaydn.waaperhd.ui.image_detail.ImageDetailContract
+import com.hsmnzaydn.waaperhd.ui.image_detail.ImageDetailPresenter
 import com.hsmnzaydn.waaperhd.ui.images.ImagesContract
 import com.hsmnzaydn.waaperhd.ui.images.ImagesPresenter
 import dagger.Module
@@ -27,6 +29,16 @@ class PresenterModule {
         return ImagesPresenter(imageUseCase)
     }
 
+    @Provides
+    @Singleton
+    fun provideImageDetailModule(imageUseCase:ImageUseCase): ImageDetailContract.Presenter<ImageDetailContract.View>
+    {
+        return ImageDetailPresenter(imageUseCase)
+    }
+
+
 }
+
+
 
 

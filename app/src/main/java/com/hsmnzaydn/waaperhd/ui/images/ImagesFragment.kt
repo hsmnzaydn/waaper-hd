@@ -11,6 +11,8 @@ import com.hsmnzaydn.waaperhd.databinding.ActivityHomeBinding
 import com.hsmnzaydn.waaperhd.databinding.FragmentImagesBinding
 import com.hsmnzaydn.waaperhd.image.domain.entities.Image
 import com.hsmnzaydn.waaperhd.ui.adapters.ImagesAdapter
+import com.hsmnzaydn.waaperhd.ui.controller
+import com.hsmnzaydn.waaperhd.ui.image_detail.ImageDetailFragment
 import javax.inject.Inject
 
 class ImagesFragment : BaseFragment(), ImagesContract.View {
@@ -52,10 +54,7 @@ class ImagesFragment : BaseFragment(), ImagesContract.View {
         imageAdapter.items = response?.let { it } ?: emptyList()
 
         imageAdapter.onItemClick {it,position,layoutId ->
-            var re = response?.toMutableList()
-            re?.removeAt(position)
-            response = re
-            imageAdapter.items = re?.let { it.toList() }?: emptyList()
+            controller.navigate(ImageDetailFragment())
         }
     }
 
