@@ -5,21 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/fragment_image_detail_appbarlayout"
+
+    <com.hsmnzaydn.waaperhd.ui.custom_view.HsmnzaydnToolbar
+        android:id="@+id/fragment_image_detail_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
+        app:backIcon="@drawable/ic_arrow_back_white_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.hsmnzaydn.waaperhd.ui.custom_view.HsmnzaydnToolbar
-            android:id="@+id/fragment_image_detail_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:backIcon="@drawable/ic_arrow_back_white_24dp"
-            app:text="@string/app_name" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="2dp"
+        app:text="@string/app_name" />
 
 
-    </com.google.android.material.appbar.AppBarLayout>
+    <ozaydin.serkan.com.image_zoom_view.ImageViewZoom
+        android:id="@+id/fragment_detail_imageViewZoom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:elevation="2dp"
+        android:id="@+id/fragment_image_detail_progressbar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/dark_ping"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_imageViewZoom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_imageViewZoom"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_image_detail_toolbar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:layout_gravity="end|bottom"
+        app:backgroundTint="@color/yellow"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        android:src="@drawable/ic_arrow_downward_white_24dp"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_image_detail_toolbar"
+        app:layout_constraintVertical_bias="0.972" />
 </androidx.constraintlayout.widget.ConstraintLayout >

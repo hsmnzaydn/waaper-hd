@@ -46,7 +46,7 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
         imageAdapter = ImagesAdapter(activity!!)
         imageAdapter.onInitGrid(
             binding!!.fragmentImagesRecylerview,
-            column = 2
+            column = 3
         )
 
         binding?.fragmentImagesRecylerview?.pagenation {
