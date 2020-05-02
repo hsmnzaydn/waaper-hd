@@ -53,14 +53,16 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation core_base_mvp_dependencies.kotlin
-    implementation core_base_mvp_dependencies.appCompat
-    implementation core_base_mvp_dependencies.dagger2
-    kapt core_base_mvp_dependencies.dagger2Compiler
-    kapt core_base_mvp_dependencies.dagger2Processor
-    implementation core_base_mvp_dependencies.dagger2Android
-    implementation core_base_mvp_dependencies.dagger2Support
-    implementation core_base_mvp_dependencies.recylerView
+    implementation app_dependencies.kotlin
+    implementation app_dependencies.appCompat
+    implementation app_dependencies.dagger2
+    kapt app_dependencies.dagger2Compiler
+    kapt app_dependencies.dagger2Processor
+    implementation app_dependencies.dagger2Android
+    implementation app_dependencies.dagger2Support
+    implementation app_dependencies.recylerView
+    implementation app_dependencies.design
+    implementation app_dependencies.imageZoomView
 
     api project(':core_utility')
     api project(':core_network')

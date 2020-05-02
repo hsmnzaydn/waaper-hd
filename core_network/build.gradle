@@ -39,10 +39,11 @@ android {
     productFlavors {
         flavorDimensions "version"
         beta {
-            buildConfigField "String", "BASE_URL", '"http://192.168.0.29:8080/api/"'
+            //buildConfigField "String", "BASE_URL", '"http://192.168.0.29:8080/api/"'
+            buildConfigField "String", "BASE_URL", '"https://waaperhd.herokuapp.com/api/"'
         }
         prod {
-            buildConfigField "String", "BASE_URL", '"https://api.unsplash.com/api/"'
+            buildConfigField "String", "BASE_URL", '"https://waaperhd.herokuapp.com/api/"'
         }
     }
 

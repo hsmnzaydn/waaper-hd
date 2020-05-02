@@ -43,6 +43,12 @@ ext {
     //Matisse
     matisse = '0.5.3-beta3'
 
+    //design
+    design = '28.0.0'
+
+    //ImagezoomView
+    imageZoomView = '1.2.1'
+
     core_common_dependencies = [
             androidMinSdkVersion    : androidMinSdkVersion,
             androidTargetSdkVersion : androidTargetSdkVersion,
@@ -109,23 +115,25 @@ ext {
     ]
 
     app_dependencies = [
-            ktx             : "androidx.core:core-ktx:$ktx_version",
-            constraintlayout: "androidx.constraintlayout:constraintlayout:$constraintLayout",
-            appCompat       : "androidx.appcompat:appcompat:$appCompat",
-            kotlin          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
-            dagger2         : "com.google.dagger:dagger:$dagger2Version",
-            dagger2Compiler : "com.google.dagger:dagger-compiler:$dagger2Version",
-            dagger2Processor: "com.google.dagger:dagger-android-processor:$dagger2Version",
-            dagger2Android  : "com.google.dagger:dagger-android:$dagger2Version",
-            dagger2Support  : "com.google.dagger:dagger-android-support:$dagger2Version",
-            recylerView     : "androidx.recyclerview:recyclerview:$recylerviewVersion",
-            cardView        : "androidx.cardview:cardview:$cardViewVersion",
-            constraintlayout: "androidx.constraintlayout:constraintlayout:$constraintLayout",
+            ktx                  : "androidx.core:core-ktx:$ktx_version",
+            constraintlayout     : "androidx.constraintlayout:constraintlayout:$constraintLayout",
+            appCompat            : "androidx.appcompat:appcompat:$appCompat",
+            kotlin               : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            dagger2              : "com.google.dagger:dagger:$dagger2Version",
+            dagger2Compiler      : "com.google.dagger:dagger-compiler:$dagger2Version",
+            dagger2Processor     : "com.google.dagger:dagger-android-processor:$dagger2Version",
+            dagger2Android       : "com.google.dagger:dagger-android:$dagger2Version",
+            dagger2Support       : "com.google.dagger:dagger-android-support:$dagger2Version",
+            recylerView          : "androidx.recyclerview:recyclerview:$recylerviewVersion",
+            cardView             : "androidx.cardview:cardview:$cardViewVersion",
+            constraintlayout     : "androidx.constraintlayout:constraintlayout:$constraintLayout",
             retrofit             : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             retrofitRxJavaAdapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
             rxJava               : "io.reactivex.rxjava2:rxjava:$rxjava2Version",
-            rxAndroid            : "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+            rxAndroid            : "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
+            design               : "com.android.support:design:$design",
+            imageZoomView        : "com.github.hsmnzaydn:imagezoom:$imageZoomView"
 
 
     ]

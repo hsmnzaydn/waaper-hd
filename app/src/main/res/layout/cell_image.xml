@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.AppCompatImageView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="200dp"
     android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="20dp"
-    android:layout_margin="10dp">
+    android:id="@+id/cell_image_thumbnail_imageView"
+    android:layout_margin="2dp"
+    android:scaleType="centerCrop">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/cell_image_thumbnail_imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</androidx.cardview.widget.CardView>
+</androidx.appcompat.widget.AppCompatImageView>

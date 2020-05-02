@@ -70,7 +70,7 @@ dependencies {
     implementation app_dependencies.constraintlayout
     implementation app_dependencies.cardView
     implementation app_dependencies.recylerView
-    implementation 'com.github.hsmnzaydn:imagezoom:1.2.1'
+    implementation app_dependencies.design
 
     api project(':core_network')
     api project(':core_local')

@@ -14,6 +14,7 @@ class ImageDetailPresenter<V : ImageDetailContract.View> @Inject constructor(pri
             imageUseCase.getImage(it,object :BaseResponseCallBack<Image.ImageDetail>(mvpView){
                 override fun onSuccess(response: Image.ImageDetail?) {
                     super.onSuccess(response)
+                    mvpView.setImageData(response)
                 }
             })
         }
