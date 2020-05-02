@@ -14,7 +14,6 @@ interface ImagesContract {
          */
         fun loadDataToList(oldItems: List<Image>?)
 
-        fun updateList(newItems: List<Image>?)
     }
 
     interface Presenter<V : View> : MvpPresenter<V> {

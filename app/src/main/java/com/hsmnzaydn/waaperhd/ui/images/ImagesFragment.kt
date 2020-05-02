@@ -21,26 +21,17 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
 
     override fun loadDataToList(response: List<Image>?) {
         imageAdapter.items = response!!
+
         imageAdapter.updateList(binding!!.fragmentImagesRecylerview)
+
         imageAdapter.onItemClick { it, position, layoutId ->
-            imageAdapter.items[position].imagePath= "https://www.bigstockphoto.com/images/homepage/module-6.jpg"
-            imageAdapter.changeData(position)
+          controller.navigate(ImageDetailFragment())
         }
 
     }
 
-    override fun updateList(newItems: List<Image>?) {
-       // imageAdapter.updateList(newItems!!.toMutableList())
-     //  val recyclerViewState: Parcelable = binding!!.fragmentImagesRecylerview
-      //  binding!!.fragmentImagesRecylerview
-    }
-
-
-
     override fun initUI() {
-
         binding = FragmentImagesBinding.inflate(layoutInflater)
-
         presenter.onAttach(this)
 
         initImageAdapter()
@@ -49,8 +40,6 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
 
     private fun initImageAdapter() {
         imageAdapter = ImagesAdapter(activity!!)
-
-
         imageAdapter.onInitGrid(
             binding!!.fragmentImagesRecylerview,
             column = 2
@@ -64,7 +53,7 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
     }
 
     override fun againOpened() {
-        presenter.getImages()
+      //  presenter.getImages()
     }
 
 

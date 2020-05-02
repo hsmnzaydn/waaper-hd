@@ -14,6 +14,8 @@ abstract class BaseFragment<T : ViewBinding> : DaggerFragment(), MvpView {
     private var baseActivity: BaseActivity? = null
 
     protected var binding: T? = null
+        get() =  binding?.let { it }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

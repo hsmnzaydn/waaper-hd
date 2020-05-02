@@ -11,18 +11,13 @@ import com.hsmnzaydn.waaperhd.databinding.FragmentImagesBinding
 import javax.inject.Inject
 
 class ImageDetailFragment : BaseFragment<FragmentImageDetailBinding>(), ImageDetailContract.View {
+
     @Inject
     lateinit var presenter: ImageDetailContract.Presenter<ImageDetailContract.View>
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun initUI() {
         binding = FragmentImageDetailBinding.inflate(layoutInflater)
-
         presenter.onAttach(this)
-        return binding?.root
     }
 
 

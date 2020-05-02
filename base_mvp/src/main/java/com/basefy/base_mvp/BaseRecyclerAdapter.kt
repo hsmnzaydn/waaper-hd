@@ -1,14 +1,16 @@
 package com.basefy.base_mvp
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.properties.Delegates
 
 abstract class BaseRecyclerAdapter<M : RecyclerItem, VH : BaseViewHolder<M>>
-    : RecyclerView.Adapter<VH>(), DiffAdapter {
+    : ListAdapter<M, VH>(DiffCallback<M>())  {
 
 
     private var onItemClick: ((M,position:Int,layoutId:Int) -> Unit) = {_,_ ,_->}
@@ -16,8 +18,9 @@ abstract class BaseRecyclerAdapter<M : RecyclerItem, VH : BaseViewHolder<M>>
     private var onViewClick: ((M, View) -> Unit) = { _, _ -> }
 
 
+
     var items: List<M> by Delegates.observable(emptyList()) { _, old, new ->
-        this@BaseRecyclerAdapter.notifyDiff(old, new)
+        this@BaseRecyclerAdapter.submitList(new)
     }
 
     fun updateList( recyclerView: RecyclerView){
@@ -47,6 +50,16 @@ abstract class BaseRecyclerAdapter<M : RecyclerItem, VH : BaseViewHolder<M>>
     }
 
     abstract override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH
+
+    open class DiffCallback<M : RecyclerItem> : DiffUtil.ItemCallback<M>() {
+        override fun areItemsTheSame(oldItem: M, newItem: M):Boolean {
+
+            return oldItem.hashCode() == newItem.hashCode()
+        }
+
+        @SuppressLint("DiffUtilEquals")
+        override fun areContentsTheSame(oldItem: M, newItem: M) = oldItem == newItem
+    }
 
 
 }

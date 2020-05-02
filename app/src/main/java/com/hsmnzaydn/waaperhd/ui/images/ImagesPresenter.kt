@@ -18,15 +18,8 @@ BasePresenter<V>(),ImagesContract.Presenter<V>{
         imageUseCase.getImages(page,object : BaseResponseCallBack<List<Image.ThumbNailImage>>(mvpView){
             override fun onSuccess(response: List<Image.ThumbNailImage>?) {
                 super.onSuccess(response)
-               /* if(page != 1){
-                    mvpView.updateList(response)
-                }else{
-
-                }*/
-
                 imageList.addAll(response!!)
                 mvpView.loadDataToList(imageList)
-           //     imageList.addAll(response!!.toMutableList())
                 page++
             }
         })
