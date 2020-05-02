@@ -21,23 +21,18 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
 
     override fun loadDataToList(response: List<Image>?) {
         imageAdapter.items = response!!
+        imageAdapter.updateList(binding!!.fragmentImagesRecylerview)
         imageAdapter.onItemClick { it, position, layoutId ->
-            var items:MutableList<Image> = ArrayList<Image>()
-            items = imageAdapter.items.toMutableList()
-            items.removeAt(position)
-            imageAdapter.items = items
-          //  controller.navigate(ImageDetailFragment())
+            imageAdapter.items[position].imagePath= "https://www.bigstockphoto.com/images/homepage/module-6.jpg"
+            imageAdapter.changeData(position)
         }
 
     }
 
     override fun updateList(newItems: List<Image>?) {
-        imageAdapter.updateList(newItems!!.toMutableList())
-        val recyclerViewState: Parcelable = binding!!.fragmentImagesRecylerview.getLayoutManager()!!.onSaveInstanceState()!!
-// apply diff result here (dispatch updates to the adapter)
-        // apply diff result here (dispatch updates to the adapter)
-        binding!!.fragmentImagesRecylerview.getLayoutManager()!!.onRestoreInstanceState(recyclerViewState)
-
+       // imageAdapter.updateList(newItems!!.toMutableList())
+     //  val recyclerViewState: Parcelable = binding!!.fragmentImagesRecylerview
+      //  binding!!.fragmentImagesRecylerview
     }
 
 
