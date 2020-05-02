@@ -37,30 +37,9 @@ class CoreServicesModules {
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
             .cache(cache)
-            .addInterceptor(object : Interceptor {
-                override fun intercept(chain: Interceptor.Chain): Response {
-                    val original: Request = chain.request()
-                    val originalHttpUrl = original.url()
-
-                    val url = originalHttpUrl.newBuilder()
-                        .addQueryParameter(
-                            "client_id",
-                            com.basefy.core_network.BuildConfig.SECRET_KEY
-                        )
-                        .build()
-
-                    val requestBuilder = original.newBuilder()
-                        .url(url)
-
-                    val request = requestBuilder.build()
-                    return chain.proceed(request)
-
-                }
-
-            })
             .addInterceptor(loggingInterceptor)
-
             .build()
+
         return Retrofit.Builder().baseUrl(com.basefy.core_network.BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())

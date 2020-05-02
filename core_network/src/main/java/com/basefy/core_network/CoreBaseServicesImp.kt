@@ -1,6 +1,7 @@
 package com.basefy.core_network
 
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -17,7 +18,7 @@ open class CoreBaseServicesImp @Inject constructor(
      */
     fun <T > getRequest(
         callbackCore: CoreServiceCallback<T>,
-        observable: () -> Observable<T>
+        observable: () -> Single<T>
     ): Disposable = observable()
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())

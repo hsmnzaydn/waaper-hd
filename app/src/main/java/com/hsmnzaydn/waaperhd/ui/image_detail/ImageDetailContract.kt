@@ -11,6 +11,10 @@ interface ImageDetailContract {
     }
 
     interface Presenter<V : View> : MvpPresenter<V> {
+        /**
+         * Resim detayı çağırır
+         */
+        fun getImage(string: String?)
 
     }
 }

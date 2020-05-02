@@ -39,12 +39,10 @@ android {
     productFlavors {
         flavorDimensions "version"
         beta {
-            buildConfigField "String", "BASE_URL", '"https://api.unsplash.com/"'
-            buildConfigField "String", "SECRET_KEY", '"648399337dfab6d768f671fec0d8b4573c52e96ad5014173b28e6bc7b0931a6f"'
+            buildConfigField "String", "BASE_URL", '"http://192.168.0.29:8080/api/"'
         }
         prod {
-            buildConfigField "String", "BASE_URL", '"https://api.unsplash.com/"'
-            buildConfigField "String", "SECRET_KEY", '"648399337dfab6d768f671fec0d8b4573c52e96ad5014173b28e6bc7b0931a6f"'
+            buildConfigField "String", "BASE_URL", '"https://api.unsplash.com/api/"'
         }
     }
 

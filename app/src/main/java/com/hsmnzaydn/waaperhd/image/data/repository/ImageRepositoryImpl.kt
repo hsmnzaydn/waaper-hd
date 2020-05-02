@@ -19,4 +19,10 @@ class ImageRepositoryImpl(private val retrofit: Retrofit) : CoreBaseServicesImp(
         }
     }
 
+    override fun getImage(imageId: String, callback: CoreServiceCallback<ImageResponse>) {
+        getRequest(callback){
+            getImageServices().getImage(imageId)
+        }
+    }
+
 }

@@ -25,7 +25,11 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
         imageAdapter.updateList(binding!!.fragmentImagesRecylerview)
 
         imageAdapter.onItemClick { it, position, layoutId ->
-          controller.navigate(ImageDetailFragment())
+            it.id?.let { it1 -> ImageDetailFragment.getImageDetailInstance(it1) }?.let { it2 ->
+                controller.navigate(
+                    it2
+                )
+            }
         }
 
     }

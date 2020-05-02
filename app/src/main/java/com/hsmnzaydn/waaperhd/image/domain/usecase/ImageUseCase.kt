@@ -6,6 +6,7 @@ import com.basefy.core_network.CoreServiceCallback
 import com.hsmnzaydn.waaperhd.image.data.entities.ImageResponse
 import com.hsmnzaydn.waaperhd.image.domain.entities.Image
 import com.hsmnzaydn.waaperhd.image.domain.repository.ImageRepository
+import toImageDetail
 import toImageThumbNail
 import javax.inject.Inject
 
@@ -24,6 +25,19 @@ class ImageUseCase @Inject constructor(private val imageRepository: ImageReposit
 
             override fun onError(errorCode: Int, errorMessage: String) {
                callback.onError(errorCode, errorMessage)
+            }
+
+        })
+    }
+
+    fun getImage(imageId:String,callback: BaseResponseCallBack<Image.ImageDetail>){
+        imageRepository.getImage(imageId,object : CoreServiceCallback<ImageResponse>{
+            override fun onSuccess(response: ImageResponse?) {
+                callback.onSuccess(response?.toImageDetail())
+            }
+
+            override fun onError(errorCode: Int, errorMessage: String) {
+                callback.onError(errorCode, errorMessage)
             }
 
         })
