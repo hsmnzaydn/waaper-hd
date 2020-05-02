@@ -12,8 +12,9 @@ interface ImagesContract {
         /**
          * Sunucudan gelen resimleri recylerviewa atmak için kullanılır
          */
-        fun loadDataToList(response: List<Image>?)
+        fun loadDataToList(oldItems: List<Image>?)
 
+        fun updateList(newItems: List<Image>?)
     }
 
     interface Presenter<V : View> : MvpPresenter<V> {

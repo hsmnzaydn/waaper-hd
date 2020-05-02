@@ -13,9 +13,9 @@ class ImageRepositoryImpl(private val retrofit: Retrofit) : CoreBaseServicesImp(
     fun getImageServices(): ImageServices = retrofit.create(ImageServices::class.java)
 
 
-    override fun getImages(callback: CoreServiceCallback<List<ImageResponse>>) {
+    override fun getImages(page:Int?,callback: CoreServiceCallback<List<ImageResponse>>) {
         getRequest(callback){
-            getImageServices().getImages()
+            getImageServices().getImages(page)
         }
     }
 

@@ -11,7 +11,7 @@ interface DiffAdapter {
         old: List<M>,
         new: List<M>,
         compareItems: (M, M) -> Boolean = { oldItem, newItem ->
-            (oldItem.hashCode() == newItem.hashCode())
+            oldItem.comporeId.equals(newItem.comporeId)
         },
         compareContents: (M, M) -> Boolean = { oldItem, newItem ->
             (oldItem == newItem)

@@ -1,5 +1,6 @@
 package com.hsmnzaydn.waaperhd.image.domain.usecase
 
+import androidx.lifecycle.MutableLiveData
 import com.basefy.base_mvp.BaseResponseCallBack
 import com.basefy.core_network.CoreServiceCallback
 import com.hsmnzaydn.waaperhd.image.data.entities.ImageResponse
@@ -12,8 +13,9 @@ import javax.inject.Inject
 class ImageUseCase @Inject constructor(private val imageRepository: ImageRepository) {
 
 
-    fun getImages(callback: BaseResponseCallBack<List<Image.ThumbNailImage>>) {
-        imageRepository.getImages(object : CoreServiceCallback<List<ImageResponse>> {
+
+    fun getImages(page:Int?,callback: BaseResponseCallBack<List<Image.ThumbNailImage>>) {
+        imageRepository.getImages(page,object : CoreServiceCallback<List<ImageResponse>> {
             override fun onSuccess(response: List<ImageResponse>?) {
                 callback.onSuccess(response?.map {
                     it.toImageThumbNail()

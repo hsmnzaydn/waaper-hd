@@ -6,7 +6,9 @@
     android:id="@+id/container">
 
 
+
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/fragment_images_recylerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

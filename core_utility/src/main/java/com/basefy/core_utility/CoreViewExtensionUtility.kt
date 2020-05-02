@@ -86,6 +86,16 @@ fun <A : RecyclerView.Adapter<*>> A.onInitGrid(
     return this
 }
 
+
+fun RecyclerView.pagenation(pagenated:() -> Unit){
+
+    this.addOnScrollListener(object : EndlessOnScrollListener() {
+        override fun onScrolledToEnd() {
+            pagenated()
+        }
+    })
+}
+
 /**
  * Bir imageviewın rengini değiştirmek için kullanılır
  * @param activity: İconun rengini değiştirmek istediğin activity
