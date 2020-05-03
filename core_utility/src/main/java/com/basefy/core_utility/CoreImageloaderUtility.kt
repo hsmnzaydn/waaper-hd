@@ -182,6 +182,50 @@ class CoreImageloaderUtility {
                 .into(imageView)
         }
 
+
+        fun imageLoadWithCacheFitResize(
+            activity: Activity,
+            url: String? = "",
+            imageView: ImageView,
+            width: Int? = 600,
+            height: Int? = 350,
+            progressBar: ContentLoadingProgressBar
+
+        ) {
+
+            progressBar.visibility = View.VISIBLE
+
+            Glide.with(activity)
+                .load(url)
+                .fitCenter()
+                .override(width!!, height!!)
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .listener(object : RequestListener<Drawable> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        return false
+                    }
+
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        progressBar.visibility = View.GONE
+                        return false
+                    }
+
+                })
+                .into(imageView)
+        }
+
         /**
          * Verilen linki cache ile indirmek için kullanılır ve indirilen resmin indirilme süresine kadar loading gösterir ve indirilen imageviewı circle yapar
          * @param activity: Image için çekilen verinin set edildiği activity

@@ -1,6 +1,8 @@
 package com.hsmnzaydn.waaperhd.ui.adapters
 
 import android.app.Activity
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.ViewGroup
 import com.basefy.base_mvp.BaseRecyclerAdapter
 import com.basefy.base_mvp.BaseViewHolder
@@ -8,6 +10,7 @@ import com.basefy.core_utility.CoreImageloaderUtility
 import com.hsmnzaydn.waaperhd.R
 import com.hsmnzaydn.waaperhd.databinding.CellImageBinding
 import com.hsmnzaydn.waaperhd.image.domain.entities.Image
+import java.io.InputStream
 
 class ImagesAdapter(
     private val activity:Activity
@@ -47,7 +50,9 @@ class ImagesAdapter(
             override fun bindItem(item: Image.ThumbNailImage) {
                 binding=  CellImageBinding.bind(itemView)
 
-                CoreImageloaderUtility.imageLoaderWithCacheFitWithLoadingWithCircle(activity,item.imagePath,binding.cellImageThumbnailImageView,binding.cellImageLoadingProgressBar )
+                CoreImageloaderUtility.imageLoadWithCacheFitResize(activity,item.imagePath,binding.cellImageThumbnailImageView ,height = 700,progressBar = binding!!.cellImageLoadingProgressBar)
+
+
             }
 
             companion object {

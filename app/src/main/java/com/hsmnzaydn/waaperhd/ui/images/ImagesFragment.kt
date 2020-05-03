@@ -3,6 +3,7 @@ package com.hsmnzaydn.waaperhd.ui.images
 import android.os.Parcelable
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.basefy.base_mvp.BaseFragment
 import com.basefy.core_utility.onInitGrid
 import com.basefy.core_utility.pagenation
@@ -61,6 +62,12 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
 
     private fun initImageAdapter() {
         imageAdapter = ImagesAdapter(activity!!)
+
+        binding!!.fragmentImagesRecylerview.setItemViewCacheSize(20)
+        binding!!.fragmentImagesRecylerview.setHasFixedSize(true)
+        binding!!.fragmentImagesRecylerview.isDrawingCacheEnabled = true
+        binding!!.fragmentImagesRecylerview.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
+
         imageAdapter.onInitGrid(
             binding!!.fragmentImagesRecylerview,
             column = 3
@@ -69,6 +76,7 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
         imageAdapter.reciveBottom {
             presenter.getImages()
         }
+
 
         presenter.getImages()
     }
