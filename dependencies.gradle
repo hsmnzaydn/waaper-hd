@@ -51,6 +51,9 @@ ext {
 
     //Rxpermission
     permission = '0.10.2'
+
+    //add
+    add= '19.1.0'
     core_common_dependencies = [
             androidMinSdkVersion    : androidMinSdkVersion,
             androidTargetSdkVersion : androidTargetSdkVersion,
@@ -136,7 +139,8 @@ ext {
             rxAndroid            : "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
             design               : "com.android.support:design:$design",
             imageZoomView        : "com.github.hsmnzaydn:imagezoom:$imageZoomView",
-            permission           : "com.github.tbruyelle:rxpermissions:$permission"
+            permission           : "com.github.tbruyelle:rxpermissions:$permission",
+            add:"com.google.android.gms:play-services-ads:$add"
 
     ]
 

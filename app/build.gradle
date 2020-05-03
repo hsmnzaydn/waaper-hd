@@ -88,6 +88,7 @@ dependencies {
     implementation app_dependencies.design
     implementation app_dependencies.imageZoomView
     implementation app_dependencies.permission
+    implementation app_dependencies.add
 
     api project(':core_network')
     api project(':core_local')

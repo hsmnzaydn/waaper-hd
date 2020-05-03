@@ -3,6 +3,9 @@ package com.hsmnzaydn.waaperhd.ui.images
 import android.view.View
 import com.basefy.base_mvp.BaseFragment
 import com.basefy.core_utility.onInitGrid
+import com.basefy.core_utility.pagenation
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 import com.hsmnzaydn.waaperhd.databinding.FragmentImagesBinding
 import com.hsmnzaydn.waaperhd.image.domain.entities.Image
 import com.hsmnzaydn.waaperhd.ui.adapters.ImagesAdapter
@@ -19,6 +22,7 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
     val imageAdapter: ImagesAdapter by lazy {
         ImagesAdapter(activity!!)
     }
+    private lateinit var mInterstitialAd:InterstitialAd
 
 
 
@@ -35,6 +39,12 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
         }
 
         imageAdapter.onItemClick { it, position, layoutId ->
+            if (mInterstitialAd.isLoaded) {
+                mInterstitialAd.show()
+            } else {
+                Log.d("TAG", "The interstitial wasn't loaded yet.")
+            }
+
             it.id?.let { it1 ->
                 ImageDetailFragment.getImageDetailInstance(
                     it1,
@@ -63,6 +73,11 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
         presenter.onAttach(this)
 
         initImageAdapter()
+
+        mInterstitialAd = InterstitialAd(activity)
+        mInterstitialAd.adUnitId = "ca-app-pub-7491116475843767/2697949096"
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
+
 
     }
 
