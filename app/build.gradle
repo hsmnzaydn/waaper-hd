@@ -14,8 +14,8 @@ android {
         applicationId "com.hsmnzaydn.waaperhd"
         minSdkVersion core_common_dependencies.androidMinSdkVersion
         targetSdkVersion core_common_dependencies.androidTargetSdkVersion
-        versionCode 2
-        versionName "1.0.0"
+        versionCode 3
+        versionName "1.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
