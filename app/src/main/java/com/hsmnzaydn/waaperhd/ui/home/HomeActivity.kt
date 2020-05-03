@@ -7,6 +7,7 @@ import com.hsmnzaydn.waaperhd.databinding.ActivityHomeBinding
 import com.hsmnzaydn.waaperhd.image.domain.entities.Image
 import com.hsmnzaydn.waaperhd.ui.adapters.ImagesAdapter
 import com.hsmnzaydn.waaperhd.ui.images.ImagesFragment
+import com.hsmnzaydn.waaperhd.ui.splash.SplashFragment
 import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), HomeContract.View {
@@ -14,7 +15,7 @@ class HomeActivity : BaseActivity(), HomeContract.View {
     @Inject
     lateinit var presenter: HomeContract.Presenter<HomeContract.View>
 
-    private lateinit var binding:ActivityHomeBinding
+    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +26,9 @@ class HomeActivity : BaseActivity(), HomeContract.View {
 
         binding.activityHomeFragmentView.bind(this)
 
-        binding.activityHomeFragmentView.navigate(ImagesFragment())
+        binding.activityHomeFragmentView.navigate(SplashFragment.getSplashInstance())
 
     }
-
 
 
 }

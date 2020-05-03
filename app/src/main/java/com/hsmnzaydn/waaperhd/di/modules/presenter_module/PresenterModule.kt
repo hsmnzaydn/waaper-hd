@@ -8,6 +8,8 @@ import com.hsmnzaydn.waaperhd.ui.image_detail.ImageDetailContract
 import com.hsmnzaydn.waaperhd.ui.image_detail.ImageDetailPresenter
 import com.hsmnzaydn.waaperhd.ui.images.ImagesContract
 import com.hsmnzaydn.waaperhd.ui.images.ImagesPresenter
+import com.hsmnzaydn.waaperhd.ui.splash.SplashContract
+import com.hsmnzaydn.waaperhd.ui.splash.SplashPresenter
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -36,8 +38,17 @@ class PresenterModule {
         return ImageDetailPresenter(imageUseCase)
     }
 
+    @Provides
+    @Singleton
+    fun provideSplashModule(): SplashContract.Presenter<SplashContract.View>
+    {
+        return SplashPresenter()
+    }
 
 }
+
+
+
 
 
 
