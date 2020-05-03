@@ -4,18 +4,14 @@ import android.app.Activity
 import android.app.ProgressDialog
 import android.content.ContentValues
 import android.content.Context
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.DisplayMetrics
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import androidx.core.app.ActivityCompat
-import android.provider.Settings;
+import android.provider.Settings
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -86,6 +82,17 @@ class CoreCommonUtils {
                 }
             }
              saveImageCallback()
+        }
+
+        fun getImageUri(
+            inContext: Context,
+            inImage: Bitmap
+        ): Uri? {
+            val bytes = ByteArrayOutputStream()
+            inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+            val path: String =
+                MediaStore.Images.Media.insertImage(inContext.contentResolver, inImage, "Title", null)
+            return Uri.parse(path)
         }
 
         private fun contentValues(): ContentValues {

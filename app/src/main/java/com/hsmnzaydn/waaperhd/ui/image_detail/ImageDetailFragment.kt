@@ -1,6 +1,7 @@
 package com.hsmnzaydn.waaperhd.ui.image_detail
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import com.basefy.base_mvp.BaseFragment
 import com.basefy.core_utility.CoreCommonUtils
@@ -55,6 +56,7 @@ class ImageDetailFragment : BaseFragment<FragmentImageDetailBinding>(), ImageDet
                             activity!!,
                             it,
                             getString(R.string.app_name),
+
                             saveImageCallback = {
                                 hideLoading()
                                 showInformation(getString(R.string.image_detail_downloaded_image))
@@ -87,9 +89,16 @@ class ImageDetailFragment : BaseFragment<FragmentImageDetailBinding>(), ImageDet
         }
 
         binding!!.fragmentImageDetailSetButton.setOnClickListener {
-            /*    val wallpaperManager =
-                    WallpaperManager.getInstance(activity)
-                wallpaperManager.setBitmap(it)*/
+            showLoading()
+            CoreImageloaderUtility.getImageBitmap(activity!!,image!!.imagePath!!,fileCallback = {
+                hideLoading()
+                val intent = Intent(Intent.ACTION_ATTACH_DATA)
+                intent.addCategory(Intent.CATEGORY_DEFAULT)
+                intent.setDataAndType(CoreCommonUtils.getImageUri(activity!!,it), "image/jpeg")
+                intent.putExtra("mimeType", "image/jpeg")
+                this.startActivity(Intent.createChooser(intent, "Set as:"))
+            })
+
         }
     }
 
