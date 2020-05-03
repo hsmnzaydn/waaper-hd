@@ -57,7 +57,7 @@
             android:layout_marginLeft="8dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Download"
+            android:text="@string/common_download"
             android:background="@android:color/transparent"
             android:id="@+id/fragment_image_detail_download_button"/>
 
@@ -66,7 +66,7 @@
             android:layout_marginRight="8dp"
             android:layout_weight="0.5"
             android:layout_width="0dp"
-            android:text="Set"
+            android:text="@string/common_set"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:id="@+id/fragment_image_detail_set_button"/>

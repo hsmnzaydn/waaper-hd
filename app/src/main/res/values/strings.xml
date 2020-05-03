@@ -6,4 +6,9 @@
 
     <!-- ImageDetail -->
     <string name="image_detail_downloaded_image">Image downloaded successfully</string>
+
+
+    <!-- Common -->
+    <string name="common_download">Download</string>
+    <string name="common_set">SET</string>
 </resources>

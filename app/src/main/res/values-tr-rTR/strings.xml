@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WaaperHD</string>
+    <string name="warning_permission">İndirebilmek için lütfen istenilen izine izin veriniz</string>
+    <string name="image_detail_downloaded_image">Resminiz başarıyla indirildi</string>
+    <string name="common_download">İndir</string>
+    <string name="common_set">Kullan</string>
+</resources>
