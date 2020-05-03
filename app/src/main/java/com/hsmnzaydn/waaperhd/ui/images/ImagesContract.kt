@@ -14,6 +14,11 @@ interface ImagesContract {
          */
         fun loadDataToList(oldItems: List<Image>?)
 
+        /**
+         * Sayfanın en aşağısında bulunan loadingi göstermek için kullanılır
+         */
+        fun showBottomLoadin()
+
     }
 
     interface Presenter<V : View> : MvpPresenter<V> {

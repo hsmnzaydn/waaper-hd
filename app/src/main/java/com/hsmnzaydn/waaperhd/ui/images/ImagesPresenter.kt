@@ -14,7 +14,12 @@ BasePresenter<V>(),ImagesContract.Presenter<V>{
     var imageList:MutableList<Image> = ArrayList<Image>()
     var page:Int = 1
     override fun getImages() {
-        mvpView.showLoading()
+
+        if(page == 1){
+            mvpView.showLoading()
+        }else{
+            mvpView.showBottomLoadin()
+        }
         imageUseCase.getImages(page,object : BaseResponseCallBack<List<Image.ThumbNailImage>>(mvpView){
             override fun onSuccess(response: List<Image.ThumbNailImage>?) {
                 super.onSuccess(response)

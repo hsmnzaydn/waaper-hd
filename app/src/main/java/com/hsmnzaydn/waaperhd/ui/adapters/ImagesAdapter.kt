@@ -47,7 +47,7 @@ class ImagesAdapter(
             override fun bindItem(item: Image.ThumbNailImage) {
                 binding=  CellImageBinding.bind(itemView)
 
-                CoreImageloaderUtility.imageLoaderWithCache(activity,item.imagePath,binding.cellImageThumbnailImageView )
+                CoreImageloaderUtility.imageLoaderWithCacheFitWithLoadingWithCircle(activity,item.imagePath,binding.cellImageThumbnailImageView,binding.cellImageLoadingProgressBar )
             }
 
             companion object {

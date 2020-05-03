@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.AppCompatImageView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="133dp"
-    android:layout_height="250dp"
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
-    android:id="@+id/cell_image_thumbnail_imageView"
-    android:layout_marginRight="2dp"
-    android:layout_marginBottom="2dp"
-    android:scaleType="centerCrop">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/cell_image_thumbnail_imageView"
+        android:layout_width="130dp"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.appcompat.widget.AppCompatImageView>
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/cell_image_loading_progress_bar"
+        android:layout_width="20dp"
+            style="?android:attr/progressBarStyleLarge"
+        android:visibility="gone"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true"
+        app:layout_constraintBottom_toBottomOf="@+id/cell_image_thumbnail_imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cell_image_thumbnail_imageView"
+        app:layout_constraintTop_toTopOf="@+id/cell_image_thumbnail_imageView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.hsmnzaydn.waaperhd.ui.images
 
 import android.os.Parcelable
+import android.util.Log
+import android.view.View
 import com.basefy.base_mvp.BaseFragment
 import com.basefy.core_utility.onInitGrid
 import com.basefy.core_utility.pagenation
@@ -22,16 +24,31 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
     override fun loadDataToList(response: List<Image>?) {
         imageAdapter.items = response!!
 
+        binding!!.fragmentImageContentLoadingProgressbar.run {
+            visibility = View.GONE
+        }
+
         imageAdapter.updateList(binding!!.fragmentImagesRecylerview)
 
         imageAdapter.onItemClick { it, position, layoutId ->
-            it.id?.let { it1 -> ImageDetailFragment.getImageDetailInstance(it1) }?.let { it2 ->
+            it.id?.let { it1 ->
+                ImageDetailFragment.getImageDetailInstance(
+                    it1,
+                    imageAdapter.items[position].imagePath!!
+                )
+            }?.let { it2 ->
                 controller.navigate(
                     it2
                 )
             }
         }
 
+    }
+
+    override fun showBottomLoadin() {
+        binding!!.fragmentImageContentLoadingProgressbar.run {
+            visibility = View.VISIBLE
+        }
     }
 
     override fun initUI() {
@@ -49,7 +66,7 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
             column = 3
         )
 
-        binding?.fragmentImagesRecylerview?.pagenation {
+        imageAdapter.reciveBottom {
             presenter.getImages()
         }
 
@@ -57,7 +74,6 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
     }
 
     override fun againOpened() {
-      //  presenter.getImages()
     }
 
 
