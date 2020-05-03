@@ -1,7 +1,9 @@
 package com.basefy.core_utility
 
 import android.app.Activity
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.core.widget.ContentLoadingProgressBar
@@ -13,7 +15,9 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.request.transition.Transition
 import java.io.File
 
 
@@ -268,6 +272,23 @@ class CoreImageloaderUtility {
                 })
                 .into(imageView)
 
+        }
+
+
+        fun getImageBitmap(activity: Activity,
+                           url:String,
+                           fileCallback:(bitmap:Bitmap) -> Unit){
+            Glide.with(activity)
+                .asBitmap()
+                .load(url)
+                .into(object : CustomTarget<Bitmap>(){
+                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                        fileCallback(resource)
+                    }
+                    override fun onLoadCleared(placeholder: Drawable?) {
+                       Log.d("veri"," eri")
+                    }
+                })
         }
 
 
