@@ -89,15 +89,24 @@ class ImageDetailFragment : BaseFragment<FragmentImageDetailBinding>(), ImageDet
         }
 
         binding!!.fragmentImageDetailSetButton.setOnClickListener {
-            showLoading()
-            CoreImageloaderUtility.getImageBitmap(activity!!,image!!.imagePath!!,fileCallback = {
-                hideLoading()
-                val intent = Intent(Intent.ACTION_ATTACH_DATA)
-                intent.addCategory(Intent.CATEGORY_DEFAULT)
-                intent.setDataAndType(CoreCommonUtils.getImageUri(activity!!,it), "image/jpeg")
-                intent.putExtra("mimeType", "image/jpeg")
-                this.startActivity(Intent.createChooser(intent, "Set as:"))
-            })
+
+            rxPermissions
+                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe { granted: Boolean ->
+                    if (granted) {
+                        showLoading()
+                        CoreImageloaderUtility.getImageBitmap(activity!!,image!!.imagePath!!,fileCallback = {
+                            hideLoading()
+                            val intent = Intent(Intent.ACTION_ATTACH_DATA)
+                            intent.addCategory(Intent.CATEGORY_DEFAULT)
+                            intent.setDataAndType(CoreCommonUtils.getImageUri(activity!!,it), "image/jpeg")
+                            intent.putExtra("mimeType", "image/jpeg")
+                            this.startActivity(Intent.createChooser(intent, "Set as:"))
+                        })
+                    } else {
+                        showError(getString(R.string.warning_permission))
+                    }
+                }
 
         }
     }

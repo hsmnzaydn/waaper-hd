@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WaaperHD</string>
 
-    <string name="warning_permission">You have to accept for download image</string>
+    <string name="warning_permission">You have to accept for download/use image</string>
 
 
     <!-- ImageDetail -->

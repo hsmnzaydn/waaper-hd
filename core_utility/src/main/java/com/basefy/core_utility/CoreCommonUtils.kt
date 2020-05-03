@@ -91,7 +91,7 @@ class CoreCommonUtils {
             val bytes = ByteArrayOutputStream()
             inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
             val path: String =
-                MediaStore.Images.Media.insertImage(inContext.contentResolver, inImage, "Title", null)
+                MediaStore.Images.Media.insertImage(inContext.contentResolver, inImage, UUID.randomUUID().toString(),  UUID.randomUUID().toString())
             return Uri.parse(path)
         }
 

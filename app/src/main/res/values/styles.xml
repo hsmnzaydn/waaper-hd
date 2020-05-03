@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -6,6 +6,14 @@
         <item name="colorPrimary">@color/ping</item>
         <item name="colorPrimaryDark">@color/dark_ping</item>
         <item name="colorAccent">@color/yellow</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:autofilledHighlight" tools:targetApi="o">@android:color/transparent
+        </item>
+
     </style>
 
+    <!-- The launcher theme. It sets the main window background to the launch_screen drawable -->
+    <style name="AppTheme.Launcher">
+    <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
 </resources>
