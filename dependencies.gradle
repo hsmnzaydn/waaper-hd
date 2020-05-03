@@ -49,8 +49,8 @@ ext {
     //ImagezoomView
     imageZoomView = '1.2.1'
 
-    //Dexter
-    dexter = '6.1.0'
+    //Rxpermission
+    permission = '0.10.2'
     core_common_dependencies = [
             androidMinSdkVersion    : androidMinSdkVersion,
             androidTargetSdkVersion : androidTargetSdkVersion,
@@ -136,7 +136,7 @@ ext {
             rxAndroid            : "io.reactivex.rxjava2:rxandroid:$rxandroidVersion",
             design               : "com.android.support:design:$design",
             imageZoomView        : "com.github.hsmnzaydn:imagezoom:$imageZoomView",
-            dexter               : "com.karumi:dexter:$dexter"
+            permission           : "com.github.tbruyelle:rxpermissions:$permission"
 
     ]
 

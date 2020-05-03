@@ -41,22 +41,37 @@
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_imageViewZoom"
         app:layout_constraintTop_toBottomOf="@+id/fragment_image_detail_toolbar" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-       android:id="@+id/fragment_image_detail_floatActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:foregroundGravity="center"
-        android:layout_gravity="end|bottom"
-        app:backgroundTint="@color/yellow"
-        app:borderWidth="0dp"
-        app:elevation="6dp"
-        app:fabSize="normal"
-        android:src="@drawable/ic_arrow_downward_white_24dp"
-        android:tint="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_imageViewZoom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_image_detail_toolbar"
-        app:layout_constraintVertical_bias="0.972" />
+        android:weightSum="1"
+        android:background="@android:color/transparent">
+
+        <Button
+            android:layout_weight="0.5"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="8dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Download"
+            android:background="@android:color/transparent"
+            android:id="@+id/fragment_image_detail_download_button"/>
+
+        <Button
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:text="Set"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:id="@+id/fragment_image_detail_set_button"/>
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout >

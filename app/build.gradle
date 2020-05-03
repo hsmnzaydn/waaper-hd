@@ -11,7 +11,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.basefy.basefyandroidcore"
+        applicationId "com.hsmnzaydn.waaperhd"
         minSdkVersion core_common_dependencies.androidMinSdkVersion
         targetSdkVersion core_common_dependencies.androidTargetSdkVersion
         versionCode 1
@@ -87,7 +87,7 @@ dependencies {
     implementation app_dependencies.recylerView
     implementation app_dependencies.design
     implementation app_dependencies.imageZoomView
-    implementation app_dependencies.dexter
+    implementation app_dependencies.permission
 
     api project(':core_network')
     api project(':core_local')
