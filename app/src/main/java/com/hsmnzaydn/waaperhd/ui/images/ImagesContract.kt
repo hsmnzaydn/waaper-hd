@@ -12,12 +12,13 @@ interface ImagesContract {
         /**
          * Sunucudan gelen resimleri recylerviewa atmak için kullanılır
          */
-        fun loadDataToList(oldItems: List<Image>?)
+        fun loadDataToList(items: List<Image>?)
 
         /**
          * Sayfanın en aşağısında bulunan loadingi göstermek için kullanılır
          */
         fun showBottomLoadin()
+
 
     }
 
@@ -26,11 +27,11 @@ interface ImagesContract {
         /**
          * Ana ekrandaki resimleri çağırmak için kullanılır
          */
-        fun getImages()
+        fun getImages(pageNumber: Int? = 0)
 
         /**
          * Resim aramak için kullanılır
          */
-        fun searchImages(it: String)
+        fun searchImages(pageNumber:Int,it: String)
     }
 }

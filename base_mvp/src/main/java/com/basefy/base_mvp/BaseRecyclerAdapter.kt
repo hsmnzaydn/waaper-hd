@@ -19,6 +19,8 @@ abstract class BaseRecyclerAdapter<M : RecyclerItem, VH : BaseViewHolder<M>>
 
     private var onPagenation: (() -> Unit?)? = null
 
+
+
     public lateinit var recylerView:RecyclerView
 
     var items: List<M> by Delegates.observable(emptyList()) { _, old, new ->
@@ -42,7 +44,7 @@ abstract class BaseRecyclerAdapter<M : RecyclerItem, VH : BaseViewHolder<M>>
 
     override fun onBindViewHolder(holder: VH, position: Int) {
 
-        if(position==items.size-10){
+        if(position==items.size-4){
             onPagenation?.let { it() }
         }
         return holder.setOnViewClick(onViewClick)

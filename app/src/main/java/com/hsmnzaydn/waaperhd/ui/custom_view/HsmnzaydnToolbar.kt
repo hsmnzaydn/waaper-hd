@@ -18,6 +18,7 @@ class HsmnzaydnToolbar(context: Context, attrs: AttributeSet) : LinearLayout(con
     lateinit var searchIcon: AppCompatImageView
     lateinit var searchEditText: EditText
     lateinit var closeSearchEditText: AppCompatImageView
+    lateinit var clickCloseIcon: () -> Unit
     init {
         inflate(context, R.layout.toolbar, this)
 
@@ -51,18 +52,25 @@ class HsmnzaydnToolbar(context: Context, attrs: AttributeSet) : LinearLayout(con
         }
 
         closeSearchEditText.setOnClickListener {
+            clickCloseIcon()
             closeSearchEditText.visibility = View.GONE
             searchEditText.visibility = View.GONE
             searchIcon.visibility = View.VISIBLE
             titleTextView.visibility = View.VISIBLE
+            searchEditText.text.clear()
         }
     }
 
 
+    fun closeClickIconListener(clickCloseIcon: () -> Unit){
+        this.clickCloseIcon = clickCloseIcon
+    }
     fun listenerSearchEdittext(searchListener:(text:String) -> Unit){
         searchEditText.addTextChangedListener(object :TextWatcher{
             override fun afterTextChanged(s: Editable?) {
-                searchListener(s.toString())
+                if(!s.toString().equals("")){
+                    searchListener(s.toString())
+                }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {

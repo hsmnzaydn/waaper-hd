@@ -1,12 +1,8 @@
 package com.hsmnzaydn.waaperhd.ui.images
 
-import android.os.Parcelable
-import android.util.Log
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
 import com.basefy.base_mvp.BaseFragment
 import com.basefy.core_utility.onInitGrid
-import com.basefy.core_utility.pagenation
 import com.hsmnzaydn.waaperhd.databinding.FragmentImagesBinding
 import com.hsmnzaydn.waaperhd.image.domain.entities.Image
 import com.hsmnzaydn.waaperhd.ui.adapters.ImagesAdapter
@@ -20,15 +16,24 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
     lateinit var presenter: ImagesContract.Presenter<ImagesContract.View>
 
 
-    private lateinit var imageAdapter: ImagesAdapter
+    val imageAdapter: ImagesAdapter by lazy {
+        ImagesAdapter(activity!!)
+    }
+
+
+
+    private var pageNumber: Int? = 0
+    private var isSearch = false
+    private var searchField:String? = null
+
 
     override fun loadDataToList(response: List<Image>?) {
+
         imageAdapter.items = response!!
 
         binding!!.fragmentImageContentLoadingProgressbar.run {
             visibility = View.GONE
         }
-
 
         imageAdapter.onItemClick { it, position, layoutId ->
             it.id?.let { it1 ->
@@ -51,6 +56,9 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
         }
     }
 
+
+
+
     override fun initUI() {
         binding = FragmentImagesBinding.inflate(layoutInflater)
         presenter.onAttach(this)
@@ -60,29 +68,42 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
     }
 
     private fun initImageAdapter() {
-        imageAdapter = ImagesAdapter(activity!!)
-
-        binding!!.fragmentImagesRecylerview.setItemViewCacheSize(20)
-        binding!!.fragmentImagesRecylerview.setHasFixedSize(true)
-        binding!!.fragmentImagesRecylerview.isDrawingCacheEnabled = true
-        binding!!.fragmentImagesRecylerview.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
 
         imageAdapter.onInitGrid(
             binding!!.fragmentImagesRecylerview,
             column = 3
         )
+
         imageAdapter.recylerView = binding!!.fragmentImagesRecylerview
 
-
         imageAdapter.reciveBottom {
-            presenter.getImages()
+            pageNumber = pageNumber!! + 1
+            if(isSearch){
+                searchField?.let { presenter.searchImages(pageNumber!!, it) }
+            }else{
+                presenter.getImages(pageNumber)
+            }
         }
 
 
         presenter.getImages()
+
+        binding!!.hsmnzaydnToolbar.listenerSearchEdittext {
+            presenter.searchImages(0, it)
+            searchField = it
+            isSearch = true
+        }
+
+
+        binding!!.hsmnzaydnToolbar.closeClickIconListener {
+            pageNumber = 0
+            presenter.getImages(pageNumber)
+            isSearch = false
+        }
     }
 
     override fun againOpened() {
+
     }
 
 

@@ -71,7 +71,7 @@ fun <A : RecyclerView.Adapter<*>> A.onInitGrid(
     @DrawableRes separatorDrawable: Int? = null
 ): A {
     recyclerView.run {
-        this.layoutManager = layoutManager ?: GridLayoutManager(context, column!!)
+        this.layoutManager = layoutManager ?: NpaGridLayoutManager(context, column!!)
         adapter = this@onInitGrid
         separatorDrawable?.let {
             addItemDecoration(

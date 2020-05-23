@@ -7,4 +7,6 @@ interface RecyclerItem : Serializable {
 
     @get:LayoutRes
     val layoutId: Int
+
+
 }
