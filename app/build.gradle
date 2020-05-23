@@ -8,8 +8,8 @@ apply from: '../dependencies.gradle'
 
 android {
     compileSdkVersion core_common_dependencies.androidCompileSdkVersion
-    buildToolsVersion "29.0.2"
 
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.hsmnzaydn.waaperhd"
         minSdkVersion core_common_dependencies.androidMinSdkVersion

@@ -12,10 +12,13 @@ BasePresenter<V>(),ImagesContract.Presenter<V>{
 
 
     var imageList:MutableList<Image> = ArrayList<Image>()
-    var page:Int = 1
+    var searchImageList:MutableList<Image> = ArrayList<Image>()
+
+    var page:Int = 0
+    var pageSearch:Int = 0
     override fun getImages() {
 
-        if(page == 1){
+        if(page == 0){
             mvpView.showLoading()
         }else{
             mvpView.showBottomLoadin()
@@ -26,6 +29,22 @@ BasePresenter<V>(),ImagesContract.Presenter<V>{
                 imageList.addAll(response!!)
                 mvpView.loadDataToList(imageList)
                 page++
+            }
+        })
+    }
+
+    override fun searchImages(it: String) {
+        if(pageSearch == 0){
+            mvpView.showLoading()
+        }else{
+            mvpView.showBottomLoadin()
+        }
+
+        imageUseCase.searchImage(pageSearch,it,object :BaseResponseCallBack<List<Image.ThumbNailImage>>(mvpView){
+            override fun onSuccess(response: List<Image.ThumbNailImage>?) {
+                super.onSuccess(response)
+                searchImageList.addAll(response!!)
+                mvpView.loadDataToList(searchImageList)
             }
         })
     }

@@ -4,6 +4,7 @@
     <declare-styleable name="ToolbarView">
         <attr name="backIcon" format="reference"/>
         <attr name="text" format="string"/>
+        <attr name="searchIconVisibility" format="boolean"/>
     </declare-styleable>
 
 </resources>

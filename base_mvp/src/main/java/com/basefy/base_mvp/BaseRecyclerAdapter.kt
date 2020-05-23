@@ -19,14 +19,13 @@ abstract class BaseRecyclerAdapter<M : RecyclerItem, VH : BaseViewHolder<M>>
 
     private var onPagenation: (() -> Unit?)? = null
 
+    public lateinit var recylerView:RecyclerView
 
     var items: List<M> by Delegates.observable(emptyList()) { _, old, new ->
+        this@BaseRecyclerAdapter.recylerView.getLayoutManager()!!.onRestoreInstanceState(this@BaseRecyclerAdapter.recylerView.getLayoutManager()!!.onSaveInstanceState()!!)
         this@BaseRecyclerAdapter.submitList(new)
     }
 
-    fun updateList(recyclerView: RecyclerView) {
-        recyclerView.getLayoutManager()!!.onRestoreInstanceState(recyclerView.getLayoutManager()!!.onSaveInstanceState()!!)
-    }
 
     fun changeData(position: Int) {
         notifyItemChanged(position)

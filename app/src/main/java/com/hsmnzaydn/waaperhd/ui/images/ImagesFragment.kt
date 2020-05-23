@@ -29,7 +29,6 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
             visibility = View.GONE
         }
 
-        imageAdapter.updateList(binding!!.fragmentImagesRecylerview)
 
         imageAdapter.onItemClick { it, position, layoutId ->
             it.id?.let { it1 ->
@@ -72,6 +71,8 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
             binding!!.fragmentImagesRecylerview,
             column = 3
         )
+        imageAdapter.recylerView = binding!!.fragmentImagesRecylerview
+
 
         imageAdapter.reciveBottom {
             presenter.getImages()

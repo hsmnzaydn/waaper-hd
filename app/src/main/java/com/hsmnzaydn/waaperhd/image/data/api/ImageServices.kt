@@ -15,4 +15,7 @@ interface ImageServices {
 
     @GET("images/{id}")
     fun getImage(@Path("id") imageId:String):Single<ImageResponse>
+
+    @GET("images/search")
+    fun searchImage(@Query("page") page: Int?=1,@Query("query") query: String):Single<List<ImageResponse>>
 }

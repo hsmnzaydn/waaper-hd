@@ -27,5 +27,10 @@ interface ImagesContract {
          * Ana ekrandaki resimleri çağırmak için kullanılır
          */
         fun getImages()
+
+        /**
+         * Resim aramak için kullanılır
+         */
+        fun searchImages(it: String)
     }
 }

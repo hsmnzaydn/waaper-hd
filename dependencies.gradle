@@ -47,7 +47,7 @@ ext {
     design = '28.0.0'
 
     //ImagezoomView
-    imageZoomView = '1.2.1'
+    imageZoomView = '1.3.0'
 
     //Rxpermission
     permission = '0.10.2'

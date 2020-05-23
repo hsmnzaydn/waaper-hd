@@ -2,7 +2,9 @@ package com.hsmnzaydn.waaperhd.ui.image_detail
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.widget.Toast
 import com.basefy.base_mvp.BaseFragment
 import com.basefy.core_utility.CoreCommonUtils
 import com.basefy.core_utility.CoreImageloaderUtility
@@ -11,6 +13,9 @@ import com.hsmnzaydn.waaperhd.databinding.FragmentImageDetailBinding
 import com.hsmnzaydn.waaperhd.ui.controller
 import com.hsmnzaydn.waaperhd.utility.BundleConstant
 import com.tbruyelle.rxpermissions2.RxPermissions
+import ozaydin.serkan.com.image_zoom_view.ImageViewZoomConfig
+import ozaydin.serkan.com.image_zoom_view.SaveFileListener
+import java.io.File
 import javax.inject.Inject
 
 
@@ -33,7 +38,6 @@ class ImageDetailFragment : BaseFragment<FragmentImageDetailBinding>(), ImageDet
             binding!!.fragmentDetailImageViewZoom,
             binding!!.fragmentImageDetailProgressbar
         )
-
 
     }
 

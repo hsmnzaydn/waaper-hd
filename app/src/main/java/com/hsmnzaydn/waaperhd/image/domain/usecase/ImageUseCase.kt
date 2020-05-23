@@ -42,4 +42,17 @@ class ImageUseCase @Inject constructor(private val imageRepository: ImageReposit
 
         })
     }
+
+    fun searchImage(page: Int?,query:String,callback: BaseResponseCallBack<List<Image.ThumbNailImage>>){
+        imageRepository.searchImages(page,query,object :CoreServiceCallback<List<ImageResponse>>{
+            override fun onSuccess(response: List<ImageResponse>?) {
+                callback.onSuccess(response?.map { it.toImageThumbNail() })
+            }
+
+            override fun onError(errorCode: Int, errorMessage: String) {
+                callback.onError(errorCode, errorMessage)
+            }
+
+        })
+    }
 }
