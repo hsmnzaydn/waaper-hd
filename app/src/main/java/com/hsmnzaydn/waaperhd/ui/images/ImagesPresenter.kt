@@ -45,8 +45,7 @@ class ImagesPresenter<V : ImagesContract.View> @Inject constructor(private val i
                 override fun onSuccess(response: List<Image.ThumbNailImage>?) {
                     super.onSuccess(response)
                     imageList.addAll(response!!)
-                    mvpView.loadDataToList(response)
-
+                    mvpView.loadDataToList(imageList)
                 }
             })
     }

@@ -25,6 +25,7 @@ abstract class BaseRecyclerAdapter<M : RecyclerItem, VH : BaseViewHolder<M>>
 
     var items: List<M> by Delegates.observable(emptyList()) { _, old, new ->
         this@BaseRecyclerAdapter.recylerView.getLayoutManager()!!.onRestoreInstanceState(this@BaseRecyclerAdapter.recylerView.getLayoutManager()!!.onSaveInstanceState()!!)
+        recylerView.getRecycledViewPool().clear()
         this@BaseRecyclerAdapter.submitList(new)
     }
 

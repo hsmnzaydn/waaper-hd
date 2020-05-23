@@ -30,7 +30,6 @@ class ImagesFragment : BaseFragment<FragmentImagesBinding>(), ImagesContract.Vie
     override fun loadDataToList(response: List<Image>?) {
 
         imageAdapter.items = response!!
-
         binding!!.fragmentImageContentLoadingProgressbar.run {
             visibility = View.GONE
         }

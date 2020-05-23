@@ -11,4 +11,5 @@
     <!-- Common -->
     <string name="common_download">Download</string>
     <string name="common_set">SET</string>
+    <string name="common_search">Search</string>
 </resources>

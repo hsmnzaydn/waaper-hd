@@ -21,7 +21,7 @@
             android:layout_height="0dp"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:hint="ARA"
+            android:hint="@string/common_search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
