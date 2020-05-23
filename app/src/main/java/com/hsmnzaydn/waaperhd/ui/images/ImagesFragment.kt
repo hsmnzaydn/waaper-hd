@@ -1,5 +1,6 @@
 package com.hsmnzaydn.waaperhd.ui.images
 
+import android.util.Log
 import android.view.View
 import com.basefy.base_mvp.BaseFragment
 import com.basefy.core_utility.onInitGrid
