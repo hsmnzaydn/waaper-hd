@@ -46,7 +46,7 @@ Fragmentin yaşam döngüsünden dolayı yönetmek zordur ve navigation architec
 Proje multi modül olduğu için bağımlılıkları tüm modüller için teker teker yönetilmesi yerine **dependencies.gradle** dosyasında yönetildi. Burada yapılan bir değişiklik tüm modülleri etkileyecektir.
 
 # Multi Modüle Compile Time
-Proje multi modüle olunca projenin Compile süresi uzuyor bunu minimuma indirmek için modüllerin paralel compile olması ve gradle configürasyonlarının cachelenmesi sağlandı. Detaylar içinde **gradle.properties** dosyasına bakarbilirsiniz.
+Proje multi modüle olunca eğer modüllerde bir güncelleme yaparsanız projenin Compile süresi uzuyor bunu minimuma indirmek için modüllerin paralel compile olması ve gradle configürasyonlarının cachelenmesi sağlandı. Detaylar içinde **gradle.properties** dosyasına bakarbilirsiniz.
 
 # Uygulama Görüntüleri
 <img src="./img/one.jpg" width="200">
